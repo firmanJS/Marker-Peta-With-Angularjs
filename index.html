@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <link data-require="bootstrap-css@3.2.0" data-semver="3.2.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=placeses,visualization,drawing,geometry,places&sensor=true&language=id"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js" data-semver="1.2.17"></script>
+    <script src="https://rawgit.com/lodash/lodash/2.4.1/dist/lodash.underscore.min.js"></script>
+    <script data-require="angular-google-maps@*" data-semver="1.1.4" src="https://rawgit.com/nlaplante/angular-google-maps/1.1.4/dist/angular-google-maps.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <google-map control="map.control"  id="map-canvas"
+        draggable="true" center="map.center" zoom="map.zoom">
+        </google-map>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="origin" class="col-sm-2 control-label">Origin</label>
+            <div class="col-sm-8">
+              <input type="text" id="origin" class="form-control" ng-model="directions.pickedLocation" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="destination" class="col-sm-2 control-label">Destination</label>
+            <div class="col-sm-8">
+              <input type="text" id="destination" class="form-control" ng-model="directions.destination" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+              <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
+            </div>
+          </div>
+        </form>
+        
+        <div id="directionsList" ng-show="directions.showList" class="panel panel-primary"></div>
+      </div>
+    </div>
+  </body>
+
+</html>
